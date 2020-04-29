@@ -11,7 +11,7 @@
 - GoogLeNet for image classification 모델을 기반으로  
   Convolutional layers & 2 Fully Connected layers를 추가 및 수정했다.
   
-![YOLO1](http://drive.google.com/uc?id=1M1HGaHU4jIu0xx0vrAJpBlGCV_3j4jhg)
+![YOLO1](http://drive.google.com/uc?export=view&id=1M1HGaHU4jIu0xx0vrAJpBlGCV_3j4jhg)
 
 - 위 사진에서 중요하게 본 점은 마지막 Reshape한 7 \* 7 \* 30의 결과이다.
 
@@ -35,7 +35,7 @@ YOLO에서는 학습 시 모델과 같이 bounding box(anchor)를 같이 학습&
 ## 3. 판단
 - 마지막 층은 S \* S \* M으로 나타내진다.
     - S : 최종 그리드의 갯수, 아래처럼 사진을 총 S*S로 갈라서 기준을 잡게 한다.
-    ![YOLO2](http://drive.google.com/uc?id=1ExVJ5feqAmrHwcPk3-XhPLjahs3d2Fcm)
+    ![YOLO2](http://drive.google.com/uc?export=view&id=1ExVJ5feqAmrHwcPk3-XhPLjahs3d2Fcm)
     - M : (number of bounding box * 5 ) + number of class
         - ex) 여기서는 bounding box가 2개, class가 20개  
           => 2 * 5 + 20 = 30개!
@@ -43,7 +43,7 @@ YOLO에서는 학습 시 모델과 같이 bounding box(anchor)를 같이 학습&
 <hr>
 ### 3.1. 셀 기준에서의 결과
 
-![YOLO3](http://drive.google.com/uc?id=1K3hJmJT6VuAsQSfMNJ1EwGzDl6rLSf0g)
+![YOLO3](http://drive.google.com/uc?export=view&id=1K3hJmJT6VuAsQSfMNJ1EwGzDl6rLSf0g)
 
 한 셀에서 M개의 array에서 먼저 5 * number of bounding box가 자리를 차지한다.  
 각 box 별로 5개의 데이터를 차지한다.  
@@ -55,14 +55,14 @@ YOLO에서는 학습 시 모델과 같이 bounding box(anchor)를 같이 학습&
 
 <hr>
 
-![YOLO4](http://drive.google.com/uc?id=1Hq1Nl_wvxFd2mCRIT4k2y5Wr0ylu6VQp)
+![YOLO4](http://drive.google.com/uc?export=view&id=1Hq1Nl_wvxFd2mCRIT4k2y5Wr0ylu6VQp)
 
 나머지 20개 자리에는 각 클래스에 대한 확률을 저장한다.  
 그래서 마지막 갯수를 정하는 수식에서 class의 갯수만큼 더해주는 것이다.
 
 <hr>
 
-![YOLO5](http://drive.google.com/uc?id=1ZgLOKU-pGYeXTFhWvuWfIJnWY9w97wIm)
+![YOLO5](http://drive.google.com/uc?export=view&id=1ZgLOKU-pGYeXTFhWvuWfIJnWY9w97wIm)
 
 이제 class 확률들에 box에 대한 신뢰도를 행렬곱한다.  
 이렇게 되면 한 셀에 물체가 있더라도 학습된 box를 그렸을 때의 겹쳐지는 크기에 따라 수치가 조정된다.  
@@ -70,12 +70,12 @@ YOLO에서는 학습 시 모델과 같이 bounding box(anchor)를 같이 학습&
 이 과정을 셀 갯수인 S \* S만큼 반복하게 되고, 결과는 한 셀당 box 갯수가 나올 것이다.  
 예시에서는 7 \* 7 \* 2 = 98개의 결과가 나온다.
 
-![YOLO6](http://drive.google.com/uc?id=1h8ULNAvdB1LAsZFgKEp1ToMNCCFtoZlo)
+![YOLO6](http://drive.google.com/uc?export=view&id=1h8ULNAvdB1LAsZFgKEp1ToMNCCFtoZlo)
 
 <hr>
 ### 3.2. 최종 판단
 
-![YOLO7](http://drive.google.com/uc?id=1gVO4THkNQljmrgFe_s88BwZckg9Nps8R)
+![YOLO7](http://drive.google.com/uc?export=view&id=1gVO4THkNQljmrgFe_s88BwZckg9Nps8R)
 
 위의 결과로 같은 인덱스에 있는 값들은 한 클래스에 대한 결과값이 된다.  
 각 박스별로 그 클래스에 대한 확률의 결과값이 들어 있다.  
@@ -87,7 +87,7 @@ YOLO에서는 학습 시 모델과 같이 bounding box(anchor)를 같이 학습&
 <hr>
 
 #### 3.2.1 NMS Algorithm
-![YOLO8](http://drive.google.com/uc?id=1ESm0QIRlH5Wkk1CgKGVLhWW7FJ2LD74f)
+![YOLO8](http://drive.google.com/uc?export=view&id=1ESm0QIRlH5Wkk1CgKGVLhWW7FJ2LD74f)
 
 위에서 정렬한 상태가 되면 상단의 array형태가 될 것이다.  
 그림처럼 결과별로 box가 이미지에 그려질 것이다.  
@@ -95,7 +95,7 @@ YOLO에서는 학습 시 모델과 같이 bounding box(anchor)를 같이 학습&
 
 <hr>
 
-![YOLO9](http://drive.google.com/uc?id=1SWRn_yeTrUo2EkHdetJJHJUfS5KkhGFi)
+![YOLO9](http://drive.google.com/uc?export=view&id=1SWRn_yeTrUo2EkHdetJJHJUfS5KkhGFi)
 
 bbox_max 뒤로 이어지는 box들을 비교하면서 겹치는 범위(IoU, Intersection over Union)를 본다.  
 겹치는 범위가 0.5보다 크면 이전 값이 크다고 판단하고 그 값을 0으로 처리한다.  
@@ -103,14 +103,14 @@ bbox_max 뒤로 이어지는 box들을 비교하면서 겹치는 범위(IoU, Int
 
 <hr>
 
-![YOLO10](http://drive.google.com/uc?id=1kbHDkurE2BcmSZjRTONGrAX-SPYGtVoi)
+![YOLO10](http://drive.google.com/uc?export=view&id=1kbHDkurE2BcmSZjRTONGrAX-SPYGtVoi)
 
 판단이 끝나면 남은 다음으로 큰 값을 bbox_max로 잡고 위의 과정을 반복한다.  
 이 과정에서 살아남는 박스들은 해당 클래스의 후보군이 된다.
 
 <hr>
 
-![YOLO11](http://drive.google.com/uc?id=13HtOj0BPTOr4fLKQ2j4kYoUXzGrWzdGY)
+![YOLO11](http://drive.google.com/uc?export=view&id=13HtOj0BPTOr4fLKQ2j4kYoUXzGrWzdGY)
 
 모든 클래스에 이 과정을 반복해주면 box별로 결과수치가 매겨진다.  
 이제 이 결과들에서 그릴 box들을 결정해주면된다.  
@@ -118,7 +118,7 @@ box에서 max_score와 그의 인덱스를 가져와서 box들을 그려주면 �
 
 <hr>
 
-![YOLO12](http://drive.google.com/uc?id=1SXNOFfepTpJkeDu6qGlpApF-_Zrg5Ulp)
+![YOLO12](http://drive.google.com/uc?export=view&id=1SXNOFfepTpJkeDu6qGlpApF-_Zrg5Ulp)
 
 값이 있는 box가 모두 그려진다.  
 

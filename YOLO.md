@@ -103,7 +103,7 @@ bbox_max 뒤로 이어지는 box들을 비교하면서 겹치는 범위(IoU, Int
 
 <hr>
 
-![YOLO10](http://drive.google.com/uc?id=13HtOj0BPTOr4fLKQ2j4kYoUXzGrWzdGY)
+![YOLO10](http://drive.google.com/uc?id=1kbHDkurE2BcmSZjRTONGrAX-SPYGtVoi)
 
 판단이 끝나면 남은 다음으로 큰 값을 bbox_max로 잡고 위의 과정을 반복한다.  
 이 과정에서 살아남는 박스들은 해당 클래스의 후보군이 된다.

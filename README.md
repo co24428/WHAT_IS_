@@ -1,2 +1,1 @@
-# WHAT_IS_
-What is YOLO, ...
+# WHAT_IS_YOLO
